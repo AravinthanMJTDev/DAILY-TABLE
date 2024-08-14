@@ -1,9 +1,6 @@
-"use client";
-
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal, ArrowUpDown } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import DataTableColumnHeader from "./DataTableColumnHeadProps";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,8 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 export type DailyTable = {
   id: number;
   Date: string;
@@ -32,71 +27,72 @@ export type DailyTable = {
   workingTime: string;
 };
 
+// Define columns
 export const columns: ColumnDef<DailyTable>[] = [
   {
     accessorKey: "Date",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Date" />
+      <DataTableColumnHeader column={column} title="DATE" />
     ),
   },
   {
     accessorKey: "Hour",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Hour" />
+      <DataTableColumnHeader column={column} title="HOUR" />
     ),
   },
   {
     accessorKey: "Machine",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Machine" />
+      <DataTableColumnHeader column={column} title="MACHINE" />
     ),
   },
   {
     accessorKey: "partName",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="partName" />
+      <DataTableColumnHeader column={column} title="PART NAME" />
     ),
   },
   {
     accessorKey: "partColor",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="partColor" />
+      <DataTableColumnHeader column={column} title="PART COLOR" />
     ),
   },
   {
     accessorKey: "cavityAvai",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="cavity_Available" />
+      <DataTableColumnHeader column={column} title="CAVITY AVAILABLE" />
     ),
   },
   {
     accessorKey: "cavityUsed",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="cavity_used" />
+      <DataTableColumnHeader column={column} title="CAVITY USED" />
     ),
   },
   {
     accessorKey: "hourlyTarget",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="hourlyTarget" />
+      <DataTableColumnHeader column={column} title="HOURLY TARGET" />
     ),
   },
   {
     accessorKey: "producedQty",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="producedQty" />
+      <DataTableColumnHeader column={column} title="PRODUCED QUANTITY" />
     ),
   },
   {
     accessorKey: "acceptedQty",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="acceptedQty" />
+      <DataTableColumnHeader column={column} title="ACCEPTED QUANTITY" />
     ),
   },
   {
     accessorKey: "workingTime",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="workingTime" />
+      <DataTableColumnHeader column={column} title="WORKING TIME" />
     ),
   },
   {

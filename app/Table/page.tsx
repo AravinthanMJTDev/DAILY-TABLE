@@ -17,9 +17,8 @@ async function getData(): Promise<DailyTable[]> {
 const MemoizedDataTable = React.memo(DataTable);
 
 export default function Page() {
-  const [searchQuery, setSearchQuery] = useState(""); // Search query state
   const [data, setData] = useState<DailyTable[]>([]); // Original data state
-
+  // const Data = getData();
   // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
@@ -29,41 +28,14 @@ export default function Page() {
     fetchData();
   }, []);
 
-  // Filter data based on search query using useMemo for efficiency
-  const filteredData = useMemo(() => {
-    if (!searchQuery) return data;
-    return data.filter((item) =>
-      Object.values(item).some((value) =>
-        value.toString().toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
-  }, [searchQuery, data]);
-
-  // Debounced search handler to optimize performance
-  const debouncedSearch = useCallback(
-    debounce((query: string) => {
-      setSearchQuery(query);
-    }, 300), // Adjust the debounce delay as needed
-    []
-  );
-
-  // Handle search input change
-  const searchFun = (e: React.ChangeEvent<HTMLInputElement>) => {
-    debouncedSearch(e.target.value);
-  };
-
   return (
-    <div className="container mx-auto py-10 bg-slate-800">
-      {/* Search bar */}
-      <div className="sm:flex sm:flex-row  sm:justify-center sm:items-center md:w-1/4   sm:w-full sm:float-center md:float-right">
-        <input
-          className="sm:p-3 md:p-4 border bg-gradient-to-b from-gray-50 via-gray-200 to-gray-300 rounded-md mb-4 "
-          placeholder="Search..."
-          onChange={searchFun}
-        />
+    <div className="container mx-auto py-10 bg-slate-200 transition-all duration-700 ease-in-out border rounded-lg">
+      <div className="w-full mx-auto text-center ">
+        <p className="font-lato text-xl">Machine Table</p>
       </div>
+
       {/* DataTable */}
-      <MemoizedDataTable columns={columns} data={filteredData} />
+      <MemoizedDataTable columns={columns} data={data} />
     </div>
   );
 }
