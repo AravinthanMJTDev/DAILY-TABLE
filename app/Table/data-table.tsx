@@ -338,7 +338,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center md:justify-end md:space-x-2 py-4 md:mx-2 sm:justify-evenly sm:space-x-1">
         <Button
           variant="outline"
           size="sm"
